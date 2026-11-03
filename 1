@@ -1,0 +1,61 @@
+-- 1. Create Database
+CREATE DATABASE CollegeDB;
+USE CollegeDB;
+
+-- 2. Create Student Table
+CREATE TABLE Student (
+    StudentID INT PRIMARY KEY,
+    Name VARCHAR(50),
+    Email VARCHAR(50),
+    Age INT,
+    Address VARCHAR(50)
+);
+
+-- 3. Create Instructor Table
+CREATE TABLE Instructor (
+    InstructorID INT PRIMARY KEY,
+    Name VARCHAR(50),
+    Email VARCHAR(50),
+    Department VARCHAR(50)
+);
+
+-- 4. Create Course Table
+CREATE TABLE Course (
+    CourseID INT PRIMARY KEY,
+    CourseName VARCHAR(50),
+    Credits INT,
+    InstructorID INT,
+    FOREIGN KEY (InstructorID) REFERENCES Instructor(InstructorID)
+);
+
+-- 5. Create Enrollment Table
+CREATE TABLE Enrollment (
+    EnrollmentID INT PRIMARY KEY,
+    StudentID INT,
+    CourseID INT,
+    EnrollmentDate DATE,
+    FOREIGN KEY (StudentID) REFERENCES Student(StudentID),
+    FOREIGN KEY (CourseID) REFERENCES Course(CourseID)
+);
+
+-- 6. Insert Student Data
+INSERT INTO Student VALUES
+(1, 'Rahul', 'rahul@gmail.com', 20, 'Pune');
+
+-- 7. Insert Instructor Data
+INSERT INTO Instructor VALUES
+(101, 'Amit', 'amit@gmail.com', 'AI');
+
+-- 8. Insert Course Data
+INSERT INTO Course VALUES
+(201, 'DBMS', 4, 101);
+
+-- 9. Insert Enrollment Data
+INSERT INTO Enrollment VALUES
+(301, 1, 201, '2026-11-03');
+
+-- 10. Display Tables
+SELECT * FROM Student;
+SELECT * FROM Instructor;
+SELECT * FROM Course;
+SELECT * FROM Enrollment;
