@@ -1,0 +1,34 @@
+USE CollegeDB;
+
+-- 1. Create a simple View
+CREATE VIEW Student_View AS
+SELECT StudentID, Name, Email
+FROM Student;
+
+-- 2. Display the View
+SELECT * FROM Student_View;
+
+-- 3. Modify the View
+CREATE OR REPLACE VIEW Student_View AS
+SELECT StudentID, Name, Email, Age
+FROM Student;
+
+-- 4. Describe the View
+DESCRIBE Student_View;
+
+-- 5. Create an Index
+CREATE INDEX idx_age
+ON Student(Age);
+
+-- 6. Display Indexes
+SHOW INDEX FROM Student;
+
+-- 7. Search using Index column
+SELECT * FROM Student
+WHERE Age = 20;
+
+-- 8. Delete the Index
+DROP INDEX idx_age ON Student;
+
+-- 9. Delete the View
+DROP VIEW Student_View;
